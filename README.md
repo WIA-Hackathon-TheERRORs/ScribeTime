@@ -1,6 +1,5 @@
 # ScribeTime
 Long Desccription - :
-# ScribeTime
 
 A lot of visually impaired students or students who can not write their own exams due to any kind of physical disability or temporary problem, like fracture, face challenges in finding people who can write exams for them. Many times, they are forced to pay huge amounts also for getting their exams written. Our web application , c/a ScribeTime, helps these students in finding volunteers for writing their exam. 
 
@@ -23,4 +22,22 @@ Both the volunteers and students(or someone or some NGO on their behalf) can reg
 ## Architecture
 
 ![image](https://user-images.githubusercontent.com/86035844/122547027-3a0e3180-d04d-11eb-9686-2da049df6dcc.png)
+
+1. Student and volunteer can interact with the flask web application to raise request or accept/ reject requests respectively.
+2. The web application and search algo use cloudant database to find the best suitable volunteer for the request raised by the student.
+3. Once suitable volunteers are found, the web application uses Twilio to inform them.
+4. Once a request is accepted , the web application uses Twilio to inform the respective student.
+
+## Tools Used
+1. Flask
+2. Python
+3. IBM's Cloudant
+4. IBM's Twilio
+5. HTML
+6. CSS
+
+## Conclusion
+This application saves the time and efforts a student spends in searching a scribe. It also brings the people together , who want to help such students. 
+
+
 
