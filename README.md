@@ -28,6 +28,9 @@ Both the volunteers and students(or someone or some NGO on their behalf) can reg
 3. Once suitable volunteers are found, the web application uses Twilio to notify them.
 4. Once a request is accepted , the web application uses Twilio to notify the student about the acceptance of his/her request.
 
+## Road Map
+![image](road_map.jpg)
+
 ## Tools Used
 1. Flask
 2. Python
