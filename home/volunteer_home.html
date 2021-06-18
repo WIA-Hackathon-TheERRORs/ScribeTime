@@ -90,7 +90,7 @@
 				<div class="side-img"> 
 					<img src="../home/images/aside.svg" alt="">
 				</div>
-				<div class="container">
+				<div class="container-fluid" style="display:flex; justify-content:center; flex-wrap:wrap; flex-grow: 4">
 					<center>
 					<h2 style="margin-top:60px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }} !!</h2>
 					<!-- if no requests raised -->
@@ -98,19 +98,34 @@
 					<h4>No pending Requests Available</h4>
 					{% else %}
 					<!-- if one or more requests -->
-					<div class="row">
-						<div class="col-2">
-						</div>
+					<div class="row" style="margin-left:-150px;">
 						{%for i in range(0, length)%}
-                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+                 		<div class="col-5 card" style="margin:5px; box-shadow: 0 0 8px #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 						  <img class="card-img-top" src="..." alt="Card image cap">
 						  <div class="card-body">
 							<h5 class="card-title">Request for {{ exam_request[i]['exam_name'] }}</h5><br>
 							<p><b> Raised by {{ exam_request[i]['creator'] }} </b></p>
-							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>{{ exam_request[i]['venue'] }} , {{ exam_request[i]['city'] }},{{ exam_request[i]['state'] }},{{ exam_request[i]['zip_code'] }}  </p>
-							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>{{ exam_request[i]['exam_date'] }}</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>{{ exam_request[i]['start_time'] }} - {{ exam_request[i]['end_time'] }}</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>{{ exam_request[i]['email'] }} , {{ exam_request[i]['contact'] }}</p>
+							<p class="card-text" style="margin-top:-25px;">Examination Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+								  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+								</svg> {{ exam_request[i]['venue'] }} , {{ exam_request[i]['city'] }},{{ exam_request[i]['state'] }},{{ exam_request[i]['zip_code'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-calendar3" viewBox="0 0 16 16">
+								  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+								  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg> {{ exam_request[i]['exam_date'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-clock-fill" viewBox="0 0 16 16">
+								  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								</svg> {{ exam_request[i]['start_time'] }} - {{ exam_request[i]['end_time'] }}
+								
+							</p>
+							<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+								  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+								</svg> {{ exam_request[i]['contact'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+								  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+								</svg> {{ exam_request[i]['email'] }}
+							</p>
 							<form name="accept" method ="post">
 							<input type="hidden" name="req_no" value="{{ exam_request[i]['_id'] }}">
 							<!--<input type="submit" class="btn btn-primary" name="accept" value="ACCEPT" style="margin-top:-25px;">-->
@@ -122,8 +137,6 @@
 						  </div>
 						</div>
 					   {%endfor%}
-						<div class="col-2">
-						</div>
 					
 					</div>
 					{% endif %}
@@ -137,7 +150,7 @@
 				<div class="side-img"> 
 					<img src="../home/images/aside.svg" alt="">
 				</div>
-				<div class="container">
+				<div class="container-fluid" style="display:flex; justify-content:center; flex-wrap:wrap; flex-grow: 4">
 					<center>
 					<h2 style="margin-top:60px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }} !!</h2>
 					<!-- if no requests raised -->
@@ -146,19 +159,34 @@
 					<a href="#Create_Req" ><h5>Accept Request</h5></a>
 					{% else %}
 					<!-- if one or more requests -->
-					<div class="row">
-						<div class="col-2">
-						</div>
+					<div class="row" style="margin-left:-100px;">
 						{%for i in range(0, accepted_length)%}
-                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+                 		<div class="col-4 card" style="margin:15px;box-shadow: 0 0 8px #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 						  <img class="card-img-top" src="..." alt="Card image cap">
 						  <div class="card-body">
 							<h5 class="card-title">Request for {{ accepted_request[i]['exam_name'] }}</h5><br>
 							<p><b> Raised by {{ accepted_request[i]['creator'] }} </b></p>
-							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>{{ accepted_request[i]['venue'] }} , {{ accepted_request[i]['city'] }},{{ accepted_request[i]['state'] }},{{ accepted_request[i]['zip_code'] }}  </p>
-							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>{{ accepted_request[i]['exam_date'] }}</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>{{ accepted_request[i]['start_time'] }} - {{ accepted_request[i]['end_time'] }}</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>{{ accepted_request[i]['email'] }} , {{ accepted_request[i]['contact'] }}</p>
+							<p class="card-text" style="margin-top:-25px;">Examination Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+								  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+								</svg> {{ accepted_request[i]['venue'] }} , {{ accepted_request[i]['city'] }},{{ accepted_request[i]['state'] }},{{ accepted_request[i]['zip_code'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-calendar3" viewBox="0 0 16 16">
+								  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+								  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg> {{ accepted_request[i]['exam_date'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-clock-fill" viewBox="0 0 16 16">
+								  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								</svg> {{ accepted_request[i]['start_time'] }} - {{ accepted_request[i]['end_time'] }}
+								
+							</p>
+							<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+								  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+								</svg> {{ accepted_request[i]['contact'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+								  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+								</svg> {{ accepted_request[i]['email'] }} 
+							</p>
 							<form name="reject" method ="post">
 							<input type="hidden" name="req_no" value="{{ accepted_request[i]['_id'] }}">
 							<!--<input type="submit" class="btn btn-primary" name="accept" value="ACCEPT" style="margin-top:-25px;">-->
@@ -167,11 +195,8 @@
 							</div>
 							</form>
 						  </div>
-						  
 						</div>
 					   {%endfor%}
-						<div class="col-2">
-						</div>
 				
 					</div>
 						{% endif %}
@@ -192,26 +217,60 @@
 					<div class="row">
 						<div class="col-2">
 						</div>
-                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 						  <img class="card-img-top" src="..." alt="Card image cap">
 						  <div class="card-body">
 							<h5 class="card-title">Request for PNB Examination</h5><br>
 							<p><b> Raised by Ram Manohar </b></p>
-							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>CV Raman Nagar , Bangalore, Karnataka,110089  </p>
-							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>02/02/2020</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>9:00 AM - 12: 00 PM</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>ram_manohar@gmail.com , 9834987653</p>
+							<p class="card-text" style="margin-top:-25px;">Examination Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+								  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+								</svg> CV Raman Nagar , Bangalore, Karnataka,110089<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-calendar3" viewBox="0 0 16 16">
+								  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+								  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg> 02/02/2020<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-clock-fill" viewBox="0 0 16 16">
+								  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								</svg> 9:00 AM - 12: 00 PM
+								
+							</p>
+							<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+								  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+								</svg> 9834987653<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+								  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+								</svg> ram_manohar@gmail.com
+							</p>
 						  </div>  
 						</div>
-						<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+						<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 						  <img class="card-img-top" src="..." alt="Card image cap">
 						  <div class="card-body">
 							<h5 class="card-title">Request for BSc Chemistry Exam</h5><br>
 							<p><b> Raised by Laxmi </b></p>
-							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>Nagavara Palya , Bangalore, Karnataka,110067  </p>
-							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>12/05/2020</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>10:00 AM - 1: 00 PM</p>
-							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>laxmi23@gmail.com , 7834984553</p>
+							<p class="card-text" style="margin-top:-25px;">Examination Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+								  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+								</svg> Nagavara Palya , Bangalore, Karnataka,110067<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-calendar3" viewBox="0 0 16 16">
+								  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+								  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg> 12/05/2020<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-clock-fill" viewBox="0 0 16 16">
+								  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								</svg> 10:00 AM - 01: 00 PM
+								
+							</p>
+							<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+								  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+								</svg> 7834984553<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+								  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+								</svg> laxmi23@gmail.com
+							</p>
 						  </div>  
 						</div>
 						<div class="col-2">
