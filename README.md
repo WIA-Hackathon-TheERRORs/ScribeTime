@@ -40,7 +40,7 @@ Both the volunteers and students (or someone or some NGO on their behalf) can re
 ## Demo Video
 You can find demo at https://www.youtube.com/watch?v=ykzZmbiumOo .
 
-## Road Map
+## Project RoadMap
 ![image](road_map.jpg)
 
 ## Tools Used
