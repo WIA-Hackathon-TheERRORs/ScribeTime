@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<!-- Metas -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Links -->
+    <link rel="icon" type="image/png" href="../home/images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../home/icofont.min.css">
+    <link href="../home/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../home/css/slick.css" rel="stylesheet" />
+	<link href="../home/css/main.css" rel="stylesheet" />
+    <link href="../home/css/index.css" rel="stylesheet" />
+    <link href="../home/css/student_home.css" rel="stylesheet" />
+    <!-- Document Title -->
+    <title> ScribeTime | Change a life</title>
+  </head>
+  <script>
+	
+	function show_home(){
+		document.getElementById("pending_requests").style.display = "block";
+		document.getElementById("accepted_requests").style.display = "none";
+		document.getElementById("past_requests").style.display = "none";
+		
+	}
+	function show_accepted(){
+		document.getElementById("pending_requests").style.display = "none";
+		document.getElementById("accepted_requests").style.display = "block";
+		document.getElementById("past_requests").style.display = "none";
+		
+	}
+	function show_past(){
+		document.getElementById("pending_requests").style.display = "none";
+		document.getElementById("accepted_requests").style.display = "none";
+		document.getElementById("past_requests").style.display = "block";
+		
+	}
+  </script>
+  <body>
+	<!-- HEADER SECTION -->  
+	<header id="home">
+		<div class="container" style="margin-top:-55px;">
+		  <nav class="navbar navbar-expand-lg navbar-light ">
+			<!-- Change Logo Img Here -->
+			<a class="navbar-brand" href="#">
+			<h2 style="margin-left:10px;">ScribeTime</h2>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <div class="interactive-menu-button">
+				<a href="#">
+				  <span>Menu</span>
+				</a>
+			  </div>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top:-40px; margin-left:130px;">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+				  <!-- Nav Link -->
+				  <a class="nav-link" data-scroll href="#home" onclick = "show_home()">Home<span class="sr-only">(current)</span></a>
+				</li>
+				
+				<li class="nav-item">
+				  <!-- Nav Link -->
+				  <a class="nav-link" data-scroll href="#sign-up" onclick = "show_accepted()">Accepted Scribes</a>
+				</li> 
+				<li class="nav-item">
+				  <!-- Nav Link -->
+				  <a class="nav-link" data-scroll href="#about-us" onclick = "show_past()">Past Scribes</a>
+				</li>
+				<li class="nav-item">
+				  <!-- Nav Link -->
+				  <a class="nav-link" data-scroll href="#contact-us" onclick = "show_profile()">Edit Profile</a>
+				</li>
+				<li class="nav-item">
+				  <!-- Nav Link -->
+				  <a class="nav-link" data-scroll href="#sign-up">Log Out</a>
+				</li>
+			  </ul>
+			</div>
+		  </nav>
+		</div>
+		<hr style="margin-top:-60px;">
+		<!-- PENDING SECTION -->    
+		<div class="container-fluid hero" style=" background-repeat:no-repeat; width :100%; margin-top:-70px; height:500px; display:block;" id="pending_requests">
+			<div class="container-fluid">
+				<div class="side-img"> 
+					<img src="../home/images/aside.svg" alt="">
+				</div>
+				<div class="container">
+					<center>
+					<h2 style="margin-top:60px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }} !!</h2>
+					<!-- if no requests raised -->
+					{% if length == 0 %}
+					<h4>No pending Requests Available</h4>
+					{% else %}
+					<!-- if one or more requests -->
+					<div class="row">
+						<div class="col-2">
+						</div>
+						{%for i in range(0, length)%}
+                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+						  <img class="card-img-top" src="..." alt="Card image cap">
+						  <div class="card-body">
+							<h5 class="card-title">Request for {{ exam_request[i]['exam_name'] }}</h5><br>
+							<p><b> Raised by {{ exam_request[i]['creator'] }} </b></p>
+							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>{{ exam_request[i]['venue'] }} , {{ exam_request[i]['city'] }},{{ exam_request[i]['state'] }},{{ exam_request[i]['zip_code'] }}  </p>
+							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>{{ exam_request[i]['exam_date'] }}</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>{{ exam_request[i]['start_time'] }} - {{ exam_request[i]['end_time'] }}</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>{{ exam_request[i]['email'] }} , {{ exam_request[i]['contact'] }}</p>
+							<form name="accept" method ="post">
+							<input type="hidden" name="req_no" value="{{ exam_request[i]['_id'] }}">
+							<!--<input type="submit" class="btn btn-primary" name="accept" value="ACCEPT" style="margin-top:-25px;">-->
+							<div class="col-12">
+								<input type="submit" name="accept" value="ACCEPT" style="margin-top:-17px; width:48%; float:left;"></a>
+								<input type="submit" name="reject" value="REJECT" style="margin-top:-17px; width:48%; float:right; background-color:red"></a>
+							</div>
+							</form>
+						  </div>
+						</div>
+					   {%endfor%}
+						<div class="col-2">
+						</div>
+					
+					</div>
+					{% endif %}
+					</center>
+				</div>
+			</div>
+		</div>
+		<!-- ACCEPTED SECTION -->    
+		<div class="container-fluid hero" style=" background-repeat:no-repeat; width :100%; margin-top:-70px; height:500px; display:none;" id="accepted_requests">
+			<div class="container-fluid">
+				<div class="side-img"> 
+					<img src="../home/images/aside.svg" alt="">
+				</div>
+				<div class="container">
+					<center>
+					<h2 style="margin-top:60px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }} !!</h2>
+					<!-- if no requests raised -->
+					{% if accepted_length == 0 %}
+					<h4>No Accepted Requests Available</h4>
+					<a href="#Create_Req" ><h5>Accept Request</h5></a>
+					{% else %}
+					<!-- if one or more requests -->
+					<div class="row">
+						<div class="col-2">
+						</div>
+						{%for i in range(0, accepted_length)%}
+                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+						  <img class="card-img-top" src="..." alt="Card image cap">
+						  <div class="card-body">
+							<h5 class="card-title">Request for {{ accepted_request[i]['exam_name'] }}</h5><br>
+							<p><b> Raised by {{ accepted_request[i]['creator'] }} </b></p>
+							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>{{ accepted_request[i]['venue'] }} , {{ accepted_request[i]['city'] }},{{ accepted_request[i]['state'] }},{{ accepted_request[i]['zip_code'] }}  </p>
+							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>{{ accepted_request[i]['exam_date'] }}</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>{{ accepted_request[i]['start_time'] }} - {{ accepted_request[i]['end_time'] }}</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>{{ accepted_request[i]['email'] }} , {{ accepted_request[i]['contact'] }}</p>
+							<form name="reject" method ="post">
+							<input type="hidden" name="req_no" value="{{ accepted_request[i]['_id'] }}">
+							<!--<input type="submit" class="btn btn-primary" name="accept" value="ACCEPT" style="margin-top:-25px;">-->
+							<div class="col-12">
+								<input type="submit" name="reject" value="REJECT" style="margin-top:-17px; width:100%; float:left; background-color:red"></a>
+							</div>
+							</form>
+						  </div>
+						  
+						</div>
+					   {%endfor%}
+						<div class="col-2">
+						</div>
+				
+					</div>
+						{% endif %}
+					</center>
+				</div>
+			</div>
+		</div>
+		<!-- PAST SECTION -->    
+		<div class="container-fluid hero" style=" background-repeat:no-repeat; width :100%; margin-top:-70px; height:500px; display:none;" id="past_requests">
+			<div class="container-fluid">
+				<div class="side-img"> 
+					<img src="../home/images/aside.svg" alt="">
+				</div>
+				<div class="container">
+					<center>
+					<h2 style="margin-top:60px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }} !!</h2>
+					<!-- if one or more requests -->
+					<div class="row">
+						<div class="col-2">
+						</div>
+                 		<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+						  <img class="card-img-top" src="..." alt="Card image cap">
+						  <div class="card-body">
+							<h5 class="card-title">Request for PNB Examination</h5><br>
+							<p><b> Raised by Ram Manohar </b></p>
+							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>CV Raman Nagar , Bangalore, Karnataka,110089  </p>
+							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>02/02/2020</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>9:00 AM - 12: 00 PM</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>ram_manohar@gmail.com , 9834987653</p>
+						  </div>  
+						</div>
+						<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+						  <img class="card-img-top" src="..." alt="Card image cap">
+						  <div class="card-body">
+							<h5 class="card-title">Request for BSc Chemistry Exam</h5><br>
+							<p><b> Raised by Laxmi </b></p>
+							<p class="card-text" style="margin-top:-25px;"><b>Venue: </b>Nagavara Palya , Bangalore, Karnataka,110067  </p>
+							<p class="card-text" style="margin-top:-25px;"><b>Date: </b>12/05/2020</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Time: </b>10:00 AM - 1: 00 PM</p>
+							<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>laxmi23@gmail.com , 7834984553</p>
+						  </div>  
+						</div>
+						<div class="col-2">
+						</div>
+					</div>
+					</center>
+				</div>
+			</div>
+		</div>
+	</header>
+  </body>
+</html>
