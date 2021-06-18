@@ -16,6 +16,7 @@
 	<link href="../home/css/main.css" rel="stylesheet" />
     <link href="../home/css/index.css" rel="stylesheet" />
     <link href="../home/css/student_home.css" rel="stylesheet" />
+	
     <!-- Document Title -->
     <title> ScribeTime | Change a life</title>
   </head>
@@ -97,36 +98,38 @@
 				<div class="side2-img"> 
 					<img src="../home/images/aside2.svg" alt="">
 				</div>
-				<div class="container">
+				<div class="container-fluid" style="display:flex; justify-content:center; flex-wrap:wrap; flex-grow: 4">
 					<center>
-					<h2 style="margin-top:60px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }}</h2>
+					<h2 style="margin-top:100px; color:#314584; margin-left:0px;text-align:center;">Welcome {{ name }} <span class="glyphicon glyphicon-envelope"></span></h2>
 					<!-- if no requests raised -->
 					<!--
 					<h4>No pending Requests</h4>
 					<a href="#Create_Req" ><h5>Request Scribe</h5></a>
 					-->
 					<!-- if one or more requests -->
-					<div class="row">
-						<div class="col-2">
-						</div>
+					<div class="row" style="margin-left:150px;">
 						{%for i in range(0, length)%}
-						<div class="col-4 card" style="width: 90%; margin:15px;">
+						<div class="col-5 card" style="margin:3px; box-shadow: 0 0 3px 0  #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 						  <img class="card-img-top" src="..." alt="Card image cap">
 						  <div class="card-body">
 							<h5 class="card-title">Your Scribe for {{ exam_request[i]['exam_name'] }}</h5><br>
 							{% if exam_request[i]['scribe'] != "" %}
-							<p><b> {{ exam_request[i]['scribe'] }} </b></p>
-							<p class="card-text" style="margin-top:-25px;">Contact Details:{{ exam_request[i]['email'] }},{{ exam_request[i]['contact'] }} </p>
-							<a href="#" class="btn btn-primary" style="margin-top:-25px;">View Profile</a>
+							<p style="font-size:18px;"><b>{{ exam_request[i]['scribe'] }}</b></p>
+							<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+								  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+								</svg> {{ exam_request[i]['contact'] }}<br>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+								  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+								</svg>{{ exam_request[i]['email'] }}
+							</p>
+							<a href="#" class="btn btn-primary" style="margin-top:-25px; background-color:#314584;">View Profile</a>
 							{% else %}
 							<p>Waiting for a volunteer to accept</p>
 							{% endif %}
-							
 						  </div>
 						</div>
 						{%endfor%}
-						<div class="col-2">
-						</div>
 					</div>
 					</center>
 				</div>
@@ -215,20 +218,34 @@
 				<div class="row">
 					<div class="col-2">
 					</div>
-					<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+					<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 					  <img class="card-img-top" src="..." alt="Card image cap">
 					  <div class="card-body">
 						<h5 class="card-title">Your Scribe for PNB Examination</h5><br>
 						<p><b> Aakanchha Trivedi </b></p>
-						<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>aakanchha23@gmail.com , 9834987653</p>
+						<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+							  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+							</svg> 9834987653<br>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+							  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+							</svg> aakanchha23@gmail.com
+						</p>
 					  </div>  
 					</div>
-					<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584;">
+					<div class="col-4 card" style="width: 90%; margin:15px;box-shadow: 0 0 8px #314584; background-image:url('../home/images/banner_bg_2.jpg')">
 					  <img class="card-img-top" src="..." alt="Card image cap">
 					  <div class="card-body">
 						<h5 class="card-title">Your Scribe for BSc Chemistry Exam</h5><br>
 						<p><b> Manoharshree </b></p>
-						<p class="card-text" style="margin-top:-25px;"><b>Contact Details: </b>shree30m@gmail.com , 7834984553</p>
+						<p class="card-text" style="margin-top:-25px;">Contact Details : <br>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#314584" class="bi bi-phone-fill" viewBox="0 0 16 16">
+							  <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+							</svg> 7834984553<br>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#314584" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+							  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+							</svg> shree30m@gmail.com
+						</p>
 					  </div>  
 					</div>
 					<div class="col-2">
