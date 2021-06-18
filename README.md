@@ -10,8 +10,8 @@ Both the volunteers and students(or someone or some NGO on their behalf) can reg
 ### Request Process Flow
 
 1. Student can raise request giving the exam details like venue, date ,time , language required etc. 
-2. The application will try to find the best suitable candidates who can write the exam requested by the student. The search algorithm for finding best suitable candidates should take into consideration the language required in the exam(whether the volunteer can speak and write in that language), the distance of the exam venue from the volunteer's current location(there should be some threshold that requests will be send only to volunteers within this much distance) and the educational qualification of the volunteer. The application will then send a SMS notifcation to all such applicable volunteers. 
-3. The volunteers can visit the website and accept or reject the request, if they want. 
+2. The application will try to find the best suitable candidates who can write the exam requested by the student. The search algorithm for finding best suitable candidates should take into consideration the language required in the exam (whether the volunteer can speak and write in that language), the distance of the exam venue from the volunteer's current location (requests will be sent to only those volunteers within a threshold distance) and the educational qualification of the volunteer.The application also takes into account the past requests and help to provide a personalised search for the Students. The application will then send a SMS notifcation to all such applicable volunteers. 
+3. The volunteers can visit the website and accept or reject the request, according to their availability. 
 4. Volunteer can  see all  pending requests and accepted requests and their info on the website. 
 5. Whenever a request is accepted, a SMS notification is send to the respective student also that his request got accepted. 
 6. Student can visit the volunteer's profile to check his basic information and contact the volunteer.
